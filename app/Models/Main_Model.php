@@ -6,11 +6,6 @@ use CodeIgniter\Model;
 
 class Main_Model extends Model
 {
-    protected function initialize()
-    {
-        //$this->allowedFields[] = 'middlename';
-    }
-    
     protected $table      = 'mesto';
     protected $primaryKey = 'id';
 
@@ -57,23 +52,5 @@ class Main_Model extends Model
         $this->db->join('skola', 'mesto.id=skola.mesto');
         $this->db->join('pocet_prijatych', 'skola.id=pocet_prijatych.skola');
         $this->db->join('obor', 'pocet_prijatych.obor=obor.id');
-/**        $data = array(
-            'mesto_id' => $this->input->post('mesto_id'),
-            'mesto' => $this->input->post('mesto'),
-            'obor' => $this->input->post('obor'),
-            'prijatych' => $this->input->post('prijatych'),
-            'rok_prijeti' => $this->input->post('rok_prijeti'),
-            'skola' => $this->input->post('skola'),
-            'geo_latitude' => $this->input->post('geo_latitude'),
-            'geo_longtitude' => $this->input->post('geo_longtitude'),
-        );
-       if($this->db->insert('mapy',$data)){
-            return true;
-        }
-        else
-        {
-            return false;
-        } */
-            
     } 
 }

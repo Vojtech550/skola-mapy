@@ -11,9 +11,9 @@
     </div>
 
     <div class="card-body">
-        <form action="<?= base_url('Pages/school_edit') ?>" method="POST">
+        <form action="<?= base_url('Pages/school_update/'.$row['id']) ?>" method="POST">
+        <input type="hidden" name="_method" value="PUT" />
         <div class="row">
-
             <div class="col-12 col-md-6 col-sm-12">
                 <div class="form-group mb-3">
                     <label>Název školy</label>
@@ -24,10 +24,11 @@
             <div class="col-12 col-md-6 col-sm-12">
                 <label>Vyberte obec:</label>
                 <select name="mesto" class="form-control">
+                    <option value="<?= $row['mesto'];?>">Select city</option>
                     <?php
-                    foreach($select_mesto as $row)
+                    foreach($select_mesto as $mesta)
                     {
-                        echo '<option value="'.$row->mesto.'">'.$row->nazev_mesto.'</option>';
+                        echo '<option value="'.$mesta->mesto.'">'.$mesta->nazev_mesto.'</option>';
                     }
                     ?>
                     </select>
@@ -36,16 +37,14 @@
             <div class="col-12 col-md-6 col-sm-12">
                 <div class="form-group mb-3">
                     <label>Geo_lattitude</label>
-                    <input type="text" name="geo_lat" class="form-control" placeholder="Zadejte zeměpisnou šířku" value="<?= $data['geo_lat']; ?>">
-                    <?php var_dump($row); ?>
+                    <input type="text" name="geo_lat" class="form-control" placeholder="Zadejte zeměpisnou šířku" value="<?= $row['geo_lat']; ?>">
                 </div>
             </div>
             
             <div class="col-12 col-md-6 col-sm-12">
                 <div class="form-group mb-3">
                     <label>Geo_longtitude</label>
-                    <input type="text" name="geo_long" class="form-control" placeholder="Zadejte zeměpisnou délku" value="<?php echo $data->geo_longtitude ?>">
-                    <?php var_dump($row); ?>
+                    <input type="text" name="geo_long" class="form-control" placeholder="Zadejte zeměpisnou délku" value="<?php echo $row['geo_long'] ?>">
                 </div>
             </div>
             

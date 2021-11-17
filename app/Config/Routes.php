@@ -39,7 +39,8 @@ $routes->post('admitted_add', 'Pages::admitted_add');
 $routes->get('maps', 'Pages::map');
 
 $routes->get('school_edit/(:num)', 'Pages::school_edit/$1');
-//$routes->post('school_edit/(:num)', 'Pages::school_edit/$1');
+$routes->put('school_edit/(:num)', 'Pages::school_update/$1');
+$routes->get('school_delete/(:num)', 'Pages::school_delete/$1');
 
 $routes->group('auth', ['namespace' => 'IonAuth\Controllers'], function ($routes) {
 $routes->get('/', 'Auth::index');

@@ -1,10 +1,16 @@
 <div class="container">
 	<div class="row">
-		<div class="col-12 col-md-12 col-sm-12"> <!-- col-lg-12 col-md-12 col-sm-6-->
+		<div class="col-12 col-md-12 col-sm-12">
 		<?php
 		if (session()->getFlashdata('status'))
-		{
-			echo "<h4>".session()->getFlashdata('status')."</h4>";
+		{ ?>
+		<div class="alert alert-warning alert-dismissible fade show" role="alert">
+			<?= session()->getFlashdata('status'); ?>
+			<button type="button" class="close" data-bs-dismiss="alert" aria-label="close">
+				<span aria-hidden="true">&times;</span>
+		</button>
+		</div>
+		<?php
 		}
 		?>
 		
@@ -44,7 +50,7 @@
 						<td><?php echo $row->geo_longtitude ?></td>
 						<td>
 							<a href="<?php echo base_url('school_edit/'.$row->skola_id) ?>" class="btn btn-success btn-sm">Edit</a>
-							<a href="" class="btn btn-danger btn-sm">Delete</a>
+							<a href="<?php echo base_url('school_delete/'.$row->skola_id) ?>" class="btn btn-danger btn-sm">Delete</a>
 						</td>
 					</tr>
 			 		<?php endforeach; ?>

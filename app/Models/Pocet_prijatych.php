@@ -43,27 +43,13 @@ class Pocet_prijatych extends Model
     protected $afterDelete = [];
 
     public function select_skola(){
-        //$query = $this->db->get('location');
-            $select = $this->db->query('SELECT skola.id, skola.nazev_skola FROM skola ORDER BY `nazev_skola` ASC;');
-            //echo 'Total Results: ' . $query->num_rows();
-        //     $results = $this->db->query('
-        // SELECT mesto.id AS mesto_id, mesto.nazev AS mesto, obor.nazev AS obor, pocet_prijatych.pocet AS prijatych, pocet_prijatych.rok AS rok_prijeti, skola.nazev AS skola, skola.geo_lat AS geo_lattitude, skola.geo_long AS geo_longtitude 
-        // FROM mesto
-        // INNER JOIN skola ON mesto.id=skola.mesto INNER JOIN pocet_prijatych ON skola.id=pocet_prijatych.skola 
-        // INNER JOIN obor ON pocet_prijatych.obor=obor.id');
+        $select = $this->db->query('SELECT skola.id, skola.nazev_skola FROM skola ORDER BY `nazev_skola` ASC;');
         return $select->getResult();
     }
     public function select_obor(){
-            //$query = $this->db->get('location');
-                $select = $this->db->query('SELECT DISTINCT pocet_prijatych.obor, obor.nazev_obor FROM pocet_prijatych
-                INNER JOIN obor ON pocet_prijatych.obor=obor.id
-                ORDER BY obor.nazev_obor ASC;');
-                //echo 'Total Results: ' . $query->num_rows();
-            //     $results = $this->db->query('
-            // SELECT mesto.id AS mesto_id, mesto.nazev AS mesto, obor.nazev AS obor, pocet_prijatych.pocet AS prijatych, pocet_prijatych.rok AS rok_prijeti, skola.nazev AS skola, skola.geo_lat AS geo_lattitude, skola.geo_long AS geo_longtitude 
-            // FROM mesto
-            // INNER JOIN skola ON mesto.id=skola.mesto INNER JOIN pocet_prijatych ON skola.id=pocet_prijatych.skola 
-            // INNER JOIN obor ON pocet_prijatych.obor=obor.id');
-            return $select->getResult();
+        $select = $this->db->query('SELECT DISTINCT pocet_prijatych.obor, obor.nazev_obor FROM pocet_prijatych
+        INNER JOIN obor ON pocet_prijatych.obor=obor.id
+        ORDER BY obor.nazev_obor ASC;');
+        return $select->getResult();
     }
 }

@@ -18,10 +18,8 @@ class Pages extends BaseController
     {
         $model = new Main_Model();
         $data['get_data'] = $model->load_data();
-        //$data['title'] = ucfirst($page);
         $data['title'] = 'Databáze škol';
         if ( ! is_file(APPPATH.'/Views/pages/'.$page.'.php')) {
-        // Whoops, we don't have a page for that!
         throw new \CodeIgniter\Exceptions\PageNotFoundException($page);
     }
         echo view('templates/header', $data);
@@ -30,9 +28,7 @@ class Pages extends BaseController
     }
 
     public function create($page = 'school_add')
-    { //if ( $this->ionAuth->loggedIn() ) {
-			// redirect them to the login page
-			//return redirect()->to('/auth/login');
+    {
         $data['title'] = 'Databáze škol';
         $skola = new Skola();
         $data['select_mesto'] = $skola->select_mesto();
@@ -45,13 +41,10 @@ class Pages extends BaseController
     {
         if (! $this->ionAuth->loggedIn())
 		{
-			// redirect them to the login page
 			return redirect()->to('/auth/login');
 		}
-		else if (! $this->ionAuth->isAdmin()) // remove this elseif if you want to enable this for non-admins
+		else if (! $this->ionAuth->isAdmin())
 		{
-			// redirect them to the home page because they must be an administrator to view this
-			//show_error('You must be an administrator to view this page.');
 			throw new \Exception('You must be an administrator to view this page.');
         }
         $skola = new Skola();
@@ -81,10 +74,8 @@ class Pages extends BaseController
 			// redirect them to the login page
 			return redirect()->to('/auth/login');
 		}
-		else if (! $this->ionAuth->isAdmin()) // remove this elseif if you want to enable this for non-admins
+		else if (! $this->ionAuth->isAdmin())
 		{
-			// redirect them to the home page because they must be an administrator to view this
-			//show_error('You must be an administrator to view this page.');
 			throw new \Exception('You must be an administrator to view this page.');
         }
         $pocet_prijatych = new Pocet_prijatych();
@@ -97,73 +88,6 @@ class Pages extends BaseController
         $pocet_prijatych->save($data);
         return redirect()->to(base_url('pages'))->with('status','Úspěšně přidáno');
     }
-
-    public function places_add(){
-        $mesto = new Main_model();
-        $obor = new Obor();
-        $pocet_prijatych = new Pocet_prijatych();
-        $skola = new Skola();
-        
-        $data1 = [
-            'nazev_mesto' => $this->request->getPost('nazev_mesto')
-        ];
-        $mesto->save($data1);
-
-        $data2 = [
-            'nazev_obor' => $this->request->getPost('nazev_obor'),
-        ];
-        $obor->save($data2);
-
-        $data3 = [
-            'obor' => $this->request->getPost('obor'),
-            'skola' => $this->request->getPost('skola'),
-            'pocet' => $this->request->getPost('pocet'),
-            'rok' => $this->request->getPost('rok'),
-        ];
-        $pocet_prijatych->save($data3);
-
-        $data4 = [
-            'nazev_skola' => $this->request->getPost('nazev_skola'),
-            'mesto' => $this->request->getPost('mesto'),
-            'geo_lat' => $this->request->getPost('geo_lat'),
-            'geo_long' => $this->request->getPost('geo_long'),
-        ];
-        $skola->save($data4);
-        return redirect()->to(base_url('pages'))->with('status','Úspěšně přidáno');
-    }
-    // public function admitteds_add(){
-    //     $mesto = new Main_model();
-    //     $obor = new Obor();
-    //     $pocet_prijatych = new Pocet_prijatych();
-    //     $skola = new Skola();
-        
-    //     $data1 = [
-    //         'nazev_mesto' => $this->request->getPost('nazev_mesto')
-    //     ];
-    //     $mesto->save($data1);
-
-    //     $data2 = [
-    //         'nazev_obor' => $this->request->getPost('nazev_obor'),
-    //     ];
-    //     $obor->save($data2);
-
-    //     $data3 = [
-    //         'obor' => $this->request->getPost('obor'),
-    //         'skola' => $this->request->getPost('skola'),
-    //         'pocet' => $this->request->getPost('pocet'),
-    //         'rok' => $this->request->getPost('rok'),
-    //     ];
-    //     $pocet_prijatych->save($data3);
-
-    //     $data4 = [
-    //         'nazev_skola' => $this->request->getPost('nazev_skola'),
-    //         'mesto' => $this->request->getPost('mesto'),
-    //         'geo_lat' => $this->request->getPost('geo_lat'),
-    //         'geo_long' => $this->request->getPost('geo_long'),
-    //     ];
-    //     $skola->save($data4);
-    //     return redirect()->to(base_url('pages'))->with('status','Úspěšně přidáno');
-    // }
     public function map($page = 'maps')
     {
         $model = new Main_Model();
@@ -179,26 +103,30 @@ class Pages extends BaseController
         echo view('templates/footer', $data);
     }
     //school
-        public function school_edit($id){
+        public function school_edit($id = null){
             $skola = new Skola();
-            $data['select_mesto'] = $skola->find($id);// select_mesto();
+            $data['select_mesto'] = $skola->select_mesto();
             //$data['row'] = $skola->where('id',$id)->first();
-            $data['row'] = $skola->find($id);
-            
-            //$resultset = $this->db->get();
-            //$result = $resultset->result();
-            
+            $data['row'] = $skola->find($id);            
             echo view('templates/header', $data);
             return view('pages/school_edit', $data);
             echo view('templates/footer', $data);
             
         }
-        // public function edit_show(){
-        //     $skola = new Skola();
-        //     $data['select_mesto'] = $skola->select_mesto();
-        //     $data['show'] = $skola->findAll();
-        //     echo view('templates/header', $data);
-        //     return view('pages/school_edit', $data);
-        //     echo view('templates/footer', $data);
-        // }
+        public function school_update($id = null){
+            $skola = new Skola();
+            $data = [
+            'nazev_skola' => $this->request->getPost('nazev_skola'),
+            'mesto' => $this->request->getPost('mesto'),
+            'geo_lat' => $this->request->getPost('geo_lat'),
+            'geo_long' => $this->request->getPost('geo_long'),
+        ];
+        $skola->update($id, $data);
+        return redirect()->to(base_url('pages'))->with('status','Úspěšně upraveno');
+        }
+        public function school_delete($id = null){
+            $skola = new Skola();
+            $skola->delete($id);
+            return redirect()->to(base_url('pages'))->with('status','Úspěšně smazáno');
+        }
     }

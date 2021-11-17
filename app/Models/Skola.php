@@ -43,14 +43,11 @@ class Skola extends Model
     protected $afterDelete = [];
 
     public function select_mesto(){
-        //$query = $this->db->get('location');
-            $select = $this->db->query('SELECT DISTINCT skola.mesto, mesto.nazev_mesto FROM skola INNER JOIN mesto ON skola.mesto=mesto.id ORDER BY mesto.nazev_mesto ASC;');
-            //echo 'Total Results: ' . $query->num_rows();
-        //     $results = $this->db->query('
-        // SELECT mesto.id AS mesto_id, mesto.nazev AS mesto, obor.nazev AS obor, pocet_prijatych.pocet AS prijatych, pocet_prijatych.rok AS rok_prijeti, skola.nazev AS skola, skola.geo_lat AS geo_lattitude, skola.geo_long AS geo_longtitude 
-        // FROM mesto
-        // INNER JOIN skola ON mesto.id=skola.mesto INNER JOIN pocet_prijatych ON skola.id=pocet_prijatych.skola 
-        // INNER JOIN obor ON pocet_prijatych.obor=obor.id');
+        // $db = db_connect();
+        // $builder = $this->db->table('skola');
+        // $query = $this->builder()->distinct()->select('skola.mesto, mesto.nazev_mesto')->join('mesto', 'skola.mesto=mesto.id')->orderBy('mesto.nazev_mesto','ASC');
+        $select = $this->db->query('SELECT DISTINCT skola.mesto, mesto.nazev_mesto FROM skola INNER JOIN mesto ON skola.mesto=mesto.id ORDER BY mesto.nazev_mesto ASC;');
         return $select->getResult();
+        //return $query->get()->getResult();
     }
 }
