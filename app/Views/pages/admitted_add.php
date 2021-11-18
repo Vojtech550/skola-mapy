@@ -20,7 +20,7 @@
                     <?php
                     foreach($select_skola as $row)
                     {
-                        echo '<option value="'.$row->id.'">'.$row->nazev_skola.'</option>';
+                        echo '<option value="'.$row->id.'">'.$row->nazev.'</option>';
                     }
                     ?>
                     </select>
@@ -33,7 +33,7 @@
                     <?php
                     foreach($select_obor as $row)
                     {
-                        echo '<option value="'.$row->obor.'">'.$row->nazev_obor.'</option>';
+                        echo '<option value="'.$row->obor.'">'.$row->nazev.'</option>';
                     }
                     ?>
                     </select>

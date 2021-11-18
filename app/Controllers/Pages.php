@@ -29,7 +29,7 @@ class Pages extends BaseController
 
     public function create($page = 'school_add')
     {
-        $data['title'] = 'Databáze škol';
+        $data['title'] = 'Přidej školu';
         $skola = new Skola();
         $data['select_mesto'] = $skola->select_mesto();
         echo view('templates/header', $data);
@@ -49,7 +49,7 @@ class Pages extends BaseController
         }
         $skola = new Skola();
         $data = [
-            'nazev_skola' => $this->request->getPost('nazev_skola'),
+            'nazev' => $this->request->getPost('nazev'),
             'mesto' => $this->request->getPost('mesto'),
             'geo_lat' => $this->request->getPost('geo_lat'),
             'geo_long' => $this->request->getPost('geo_long'),
@@ -71,7 +71,6 @@ class Pages extends BaseController
     public function admitted_add(){
         if (! $this->ionAuth->loggedIn())
 		{
-			// redirect them to the login page
 			return redirect()->to('/auth/login');
 		}
 		else if (! $this->ionAuth->isAdmin())
@@ -116,7 +115,7 @@ class Pages extends BaseController
         public function school_update($id = null){
             $skola = new Skola();
             $data = [
-            'nazev_skola' => $this->request->getPost('nazev_skola'),
+            'nazev' => $this->request->getPost('nazev'),
             'mesto' => $this->request->getPost('mesto'),
             'geo_lat' => $this->request->getPost('geo_lat'),
             'geo_long' => $this->request->getPost('geo_long'),

@@ -43,13 +43,13 @@ class Pocet_prijatych extends Model
     protected $afterDelete = [];
 
     public function select_skola(){
-        $select = $this->db->query('SELECT skola.id, skola.nazev_skola FROM skola ORDER BY `nazev_skola` ASC;');
+        $select = $this->db->query('SELECT skola.id, skola.nazev FROM skola ORDER BY `nazev` ASC;');
         return $select->getResult();
     }
     public function select_obor(){
-        $select = $this->db->query('SELECT DISTINCT pocet_prijatych.obor, obor.nazev_obor FROM pocet_prijatych
+        $select = $this->db->query('SELECT DISTINCT pocet_prijatych.obor, obor.nazev FROM pocet_prijatych
         INNER JOIN obor ON pocet_prijatych.obor=obor.id
-        ORDER BY obor.nazev_obor ASC;');
+        ORDER BY obor.nazev ASC;');
         return $select->getResult();
     }
 }

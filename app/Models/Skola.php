@@ -19,7 +19,7 @@ class Skola extends Model
     protected $returnType     = 'array';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['nazev_skola','mesto','geo_lat', 'geo_long'];
+    protected $allowedFields = ['nazev','mesto','geo_lat', 'geo_long'];
 
     protected $useTimestamps = false;
     protected $dateFormat = 'datetime'; //not needed
@@ -45,8 +45,8 @@ class Skola extends Model
     public function select_mesto(){
         // $db = db_connect();
         // $builder = $this->db->table('skola');
-        // $query = $this->builder()->distinct()->select('skola.mesto, mesto.nazev_mesto')->join('mesto', 'skola.mesto=mesto.id')->orderBy('mesto.nazev_mesto','ASC');
-        $select = $this->db->query('SELECT DISTINCT skola.mesto, mesto.nazev_mesto FROM skola INNER JOIN mesto ON skola.mesto=mesto.id ORDER BY mesto.nazev_mesto ASC;');
+        // $query = $this->builder()->distinct()->select('skola.mesto, mesto.nazev')->join('mesto', 'skola.mesto=mesto.id')->orderBy('mesto.nazev','ASC');
+        $select = $this->db->query('SELECT DISTINCT skola.mesto, mesto.nazev FROM skola INNER JOIN mesto ON skola.mesto=mesto.id ORDER BY mesto.nazev ASC;');
         return $select->getResult();
         //return $query->get()->getResult();
     }

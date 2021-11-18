@@ -19,7 +19,7 @@ class Obor extends Model
     protected $returnType     = 'array';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['nazev_obor'];
+    protected $allowedFields = ['nazev'];
 
     protected $useTimestamps = false;
     protected $dateFormat = 'datetime'; //not needed
@@ -43,7 +43,7 @@ class Obor extends Model
     protected $afterDelete = [];
 
     public function select_menu(){
-        $select = $this->db->query('SELECT obor.id, obor.nazev_obor FROM obor');
+        $select = $this->db->query('SELECT obor.id, obor.nazev FROM obor');
         return $select->getResult();
     }
 }

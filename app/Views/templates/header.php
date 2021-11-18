@@ -3,10 +3,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<link href="assets/css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="<?= base_url('public/assets/css/style.css'); ?>" rel="stylesheet" type="text/css"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <script src="assets/jQuery/jquery-3.6.0.min.js" type="text/javascript"></script>
+  <script src="<?= base_url('public/assets/jQuery/jquery-3.6.0.min.js'); ?>" type="text/javascript"></script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
    crossorigin=""/>
@@ -15,8 +15,8 @@
    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
    crossorigin=""></script>
    <!-- <script src="https://code.jquery.com/jquery-3.6.0.slim.js" type="text/javascript"></script>  -->
-   <link rel="stylesheet" type="text/css" href="assets/DataTables/css/jquery.dataTables.min.css"/>
-   <script type="text/javascript" src="assets/DataTables/js/jquery.dataTables.min.js"></script>
+   <link rel="stylesheet" type="text/css" href="<?= base_url('public/assets/DataTables/css/jquery.dataTables.min.css'); ?>"/>
+   <script type="text/javascript" src="<?= base_url('public/assets/DataTables/js/jquery.dataTables.min.js'); ?>"></script>
   <title><?= esc($title) ?></title>
 </head>
 

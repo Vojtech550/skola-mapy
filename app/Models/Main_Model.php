@@ -14,7 +14,7 @@ class Main_Model extends Model
     protected $returnType     = 'array';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['nazev_mesto'];
+    protected $allowedFields = ['nazev'];
 
     protected $useTimestamps = false;
     protected $dateFormat = 'datetime'; //not needed
@@ -40,17 +40,10 @@ class Main_Model extends Model
     public function load_data()
     {
         $result = $this->db->query('
-        SELECT skola.id AS skola_id, mesto.nazev_mesto AS nazev_mesto, obor.nazev_obor AS nazev_obor, pocet_prijatych.pocet AS prijatych, pocet_prijatych.rok AS rok_prijeti, skola.nazev_skola AS nazev_skola, skola.geo_lat AS geo_lattitude, skola.geo_long AS geo_longtitude 
+        SELECT skola.id AS skola_id, mesto.nazev AS nazev_mesto, obor.nazev AS nazev_obor, pocet_prijatych.pocet AS prijatych, pocet_prijatych.rok AS rok_prijeti, skola.nazev AS nazev_skola, skola.geo_lat AS geo_lattitude, skola.geo_long AS geo_longtitude 
         FROM mesto
         INNER JOIN skola ON mesto.id=skola.mesto INNER JOIN pocet_prijatych ON skola.id=pocet_prijatych.skola 
         INNER JOIN obor ON pocet_prijatych.obor=obor.id');
         return $result->getResult();
     }
-    public function school_save(){
-        $this->db->select('mesto.id AS mesto_id, mesto.nazev AS mesto, obor.nazev AS obor, pocet_prijatych.pocet AS prijatych, pocet_prijatych.rok AS rok_prijeti, skola.nazev AS skola, skola.geo_lat AS geo_lattitude, skola.geo_long AS geo_longtitude');
-        $this->db->from('mesto');
-        $this->db->join('skola', 'mesto.id=skola.mesto');
-        $this->db->join('pocet_prijatych', 'skola.id=pocet_prijatych.skola');
-        $this->db->join('obor', 'pocet_prijatych.obor=obor.id');
-    } 
 }

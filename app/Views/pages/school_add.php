@@ -17,7 +17,7 @@
             <div class="col-12 col-md-6 col-sm-12">
                 <div class="form-group mb-3">
                     <label>Název školy</label>
-                    <input type="text" name="nazev_skola" class="form-control" placeholder="Zadejte název školy">
+                    <input type="text" name="nazev" class="form-control" placeholder="Zadejte název školy">
                 </div>
             </div>
             
@@ -27,7 +27,7 @@
                     <?php
                     foreach($select_mesto as $row)
                     {
-                        echo '<option value="'.$row->mesto.'">'.$row->nazev_mesto.'</option>';
+                        echo '<option value="'.$row->mesto.'">'.$row->nazev.'</option>';
                     }
                     ?>
                     </select>
