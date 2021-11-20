@@ -1,11 +1,10 @@
-<div class="container">
+
     <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-6">
+        <div class="col-12 col-md-12 col-sm-12">
             <div id="mapid">
             </div>
         </div>
     </div>
-</div>
 <script type="text/javascript">
 
                 var mymap = L.map('mapid').setView([49.055947, 17.432431], 13);

@@ -1,3 +1,6 @@
-<em style="position:fixed; bottom:10px; left:10px;">&copy; 2021</em>
+</div>
+</div>
+<em id="footer">&copy; 2021</em>
+</div>
 </body>
 </html>

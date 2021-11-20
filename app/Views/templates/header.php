@@ -3,7 +3,6 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<link href="<?= base_url('public/assets/css/style.css'); ?>" rel="stylesheet" type="text/css"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="<?= base_url('public/assets/jQuery/jquery-3.6.0.min.js'); ?>" type="text/javascript"></script>
@@ -21,9 +20,24 @@
 </head>
 
 <body class="body">
+  <style>
+  #pg-container {
+    min-height: 100vh;
+    position: relative;
+  }
+  #content-wrap {
+    padding-bottom: 2.5rem;
+  }
+
+  #footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+  }
+  </style>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="<?= base_url()?>">Škola mapy</a>
+  <a class="navbar-brand" href="<?= base_url()?>">Škola mapy</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -43,18 +57,7 @@
         </li>
       </ul>
     </div>
-  </div>
 </nav>
-<!--	<header>
-		<ul></ul><a href="#" class="logo"><?= esc($title) ?></a></ul>
-		<ul>
-			<li><a href="#" class="asss">Databáze</a></li>
-			<li><a href="#">Mapy</a></li>
-		</ul>
-	</header>
-	<script type="text/javascript">
-	window.eventListener("scroll",function(){
-		var header = document.querySelector("header");
-		header.classlist.toggle("sticky", window.ScrollY > 0);
-	})
-</script> -->
+<div id="pg-container">
+<div id="content-wrap">
+<div class="container">

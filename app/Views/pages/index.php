@@ -1,24 +1,26 @@
-<div class="container">
+<div class="row">
 	<div class="row">
 		<div class="col-12 col-md-12 col-sm-12">
-		<?php
-		if (session()->getFlashdata('status'))
-		{ ?>
-		<div class="alert alert-warning alert-dismissible fade show" role="alert">
-			<?= session()->getFlashdata('status'); ?>
-			<button type="button" class="close" data-bs-dismiss="alert" aria-label="close">
-				<span aria-hidden="true">&times;</span>
-		</button>
+			<?php
+			if (session()->getFlashdata('status'))
+			{ ?>
+				<div class="alert alert-warning alert-dismissible fade show" role="alert">
+					<?= session()->getFlashdata('status'); ?>
+					<button type="button" class="close" data-bs-dismiss="alert" aria-label="close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			<?php
+			}
+			?>
 		</div>
-		<?php
-		}
-		?>
 		
-		<div class="card">
-			<div class="card-header">
-				<h4>Přidej školu<a href="<?= base_url('school_add') ?>" class="btn btn-primary float-right">Přidej školu</a></h4>
+		<div class="col-12 col-md-12 col-sm-12">
+			<div class="card">
+				<div class="card-header">
+					<h4>Přidej školu<a href="<?= base_url('school_add') ?>" class="btn btn-primary float-right">Přidej školu</a></h4>
+				</div>
 			</div>
-		</div>
 		</div>
 
 		<div class="col-12 col-md-12 col-sm-12">
@@ -53,20 +55,18 @@
 							<a href="<?php echo base_url('school_delete/'.$row->skola_id) ?>" class="btn btn-danger btn-sm">Delete</a>
 						</td>
 					</tr>
-			 		<?php endforeach; ?>
+					<?php endforeach; ?>
 				</tbody>
 			</table>
-			</form>
 		</div>
 	</div>
 </div>
 
 	<script type="text/javascript">
 	$(document).ready( function () {
-    $('#table_id').DataTable({
-		"lengthMenu": [ 5, 10, 15, 30, 60 ]
+		$('#table_id').DataTable({
+			"lengthMenu": [ 5, 10, 15, 30, 60 ]
+			});
 	});
-	
-} );
 </script>
 
