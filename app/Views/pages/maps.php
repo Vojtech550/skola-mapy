@@ -12,7 +12,7 @@
                 //var marker = L.marker([51.5, -0.09]).addTo(mymap);
                 <?php foreach ($get_data as $p): ?>
                 var marker = L.marker([<?= $p->geo_lattitude ?>, <?= $p->geo_longtitude ?>]).addTo(mymap);
-                marker.bindPopup("Název školy: "+ "<?= $p->skola?>" + "<br>" + "Přijatých: " + <?= $p->prijatych?> + "<br>" + "Město: "+"<?= $p->nazev_mesto ?>" + "<br>" 
+                marker.bindPopup("Název školy: "+ "<?= $p->nazev_skola?>" + "<br>" + "Přijatých: " + <?= $p->prijatych?> + "<br>" + "Město: "+"<?= $p->nazev_mesto ?>" + "<br>" 
                 + "geo_lat: " + <?= $p->geo_lattitude?> + "<br>" + "geo_long: " + <?= $p->geo_longtitude?>)
                 var popup = L.popup(); 
                 
