@@ -40,7 +40,8 @@ class Main_Model extends Model
     public function load_data()
     {
         $result = $this->db->query('
-        SELECT skola.id AS skola_id, mesto.nazev AS nazev_mesto, obor.nazev AS nazev_obor, pocet_prijatych.pocet AS prijatych, pocet_prijatych.rok AS rok_prijeti, skola.nazev AS nazev_skola, skola.geo_lat AS geo_lattitude, skola.geo_long AS geo_longtitude 
+        SELECT pocet_prijatych.id AS admitted_id, skola.id AS skola_id, mesto.nazev AS nazev_mesto, obor.nazev AS nazev_obor, pocet_prijatych.pocet AS prijatych, 
+        pocet_prijatych.rok AS rok_prijeti, skola.nazev AS nazev_skola, skola.geo_lat AS geo_lattitude, skola.geo_long AS geo_longtitude 
         FROM mesto
         INNER JOIN skola ON mesto.id=skola.mesto INNER JOIN pocet_prijatych ON skola.id=pocet_prijatych.skola 
         INNER JOIN obor ON pocet_prijatych.obor=obor.id');

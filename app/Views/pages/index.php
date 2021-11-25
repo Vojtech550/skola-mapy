@@ -52,7 +52,7 @@
 						<td><?php echo $row->geo_longtitude ?></td>
 						<td>
 							<a href="<?php echo base_url('school_edit/'.$row->skola_id) ?>" class="btn btn-success btn-sm">Edit</a>
-							<a href="<?php echo base_url('school_delete/'.$row->skola_id) ?>" class="btn btn-danger btn-sm">Delete</a>
+							<a href="<?php echo base_url('admitted_delete/'.$row->admitted_id) ?>" class="btn btn-danger btn-sm">Delete</a>
 						</td>
 					</tr>
 					<?php endforeach; ?>

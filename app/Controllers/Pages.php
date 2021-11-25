@@ -101,18 +101,24 @@ class Pages extends BaseController
         echo view('pages/'.$page, $data);
         echo view('templates/footer', $data);
     }
-    //school
-        public function school_edit($id = null){
+        public function school_edit($id){
             $skola = new Skola();
             $data['select_mesto'] = $skola->select_mesto();
-            //$data['row'] = $skola->where('id',$id)->first();
             $data['row'] = $skola->find($id);            
             echo view('templates/header', $data);
-            return view('pages/school_edit', $data);
+            echo view('pages/school_edit', $data);
             echo view('templates/footer', $data);
             
         }
-        public function school_update($id = null){
+        public function school_update($id){
+            if (! $this->ionAuth->loggedIn())
+		{
+			return redirect()->to('/auth/login');
+		}
+		else if (! $this->ionAuth->isAdmin())
+		{
+			throw new \Exception('You must be an administrator to view this page.');
+        }
             $skola = new Skola();
             $data = [
             'nazev' => $this->request->getPost('nazev'),
@@ -123,9 +129,17 @@ class Pages extends BaseController
         $skola->update($id, $data);
         return redirect()->to(base_url('pages'))->with('status','Úspěšně upraveno');
         }
-        public function school_delete($id = null){
-            $skola = new Skola();
-            $skola->delete($id);
+        public function admitted_delete($id){
+            if (! $this->ionAuth->loggedIn())
+		{
+			return redirect()->to('/auth/login');
+		}
+		else if (! $this->ionAuth->isAdmin())
+		{
+			throw new \Exception('You must be an administrator to view this page.');
+        }
+            $prijatych = new Pocet_prijatych();
+            $prijatych->delete($id);
             return redirect()->to(base_url('pages'))->with('status','Úspěšně smazáno');
         }
     }
